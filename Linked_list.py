@@ -16,11 +16,17 @@ class LinkedList:
         node2.nextnode = node3
         """
     
-    def append(self, value): # 在链表最后增加一个元素
+    def append(self, value): # 遍历列表 并在链表最后增加一个元素
         NewNode = Node(value)
         if self.head is None: # 如果这个链表没有head，增加新元素为head
             self.head = NewNode
-        current_node = self.headval
-        while(current_node.nextval): # 当 当前node一直有下一个元素的时候 我们进行循环 直到我们循环到最后一个元素 指向nextnode的地址为None 出循环
-            current_node = laste.nextval
-        current_node.nextval = NewNode # 更新旧列表的下一个元素为新增元素
+        current_node = self.head
+        while(current_node.nextnode): # 当 当前node一直有下一个元素的时候 我们进行循环 直到我们循环到最后一个元素 指向nextnode的地址为None 出循环
+            current_node = laste.nextnode
+        current_node.nextnode = NewNode # 更新旧列表的下一个元素为新增元素
+        
+    def PrintLinkedList(self): # 打印这个链表
+        current_node = self.head
+        while(current_node.nextnode):
+            print(current_node.value)
+            current_node = current_node.nextnode
