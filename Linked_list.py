@@ -33,6 +33,14 @@ class LinkedList:
             
     def AddAsHead(self, value): #添加新元素为head
         NewNode = Node(value)
-        previous_head = self.head 
+        NewNode.nextnode = self.head 
         self.head = NewNode #只需将旧head替换为新的head，并指向旧head就行
-        self.head.nextnode = previous_head
+
+        
+    def AddMiddle(self, lastnode, value): #在表的中间添加一个新的元素
+        if not lastnode:
+            print("The last node does not exist!")
+        
+        NewNode = Node(value)
+        NewNode.nextnode = lastnode.nextnode #原理与添加新元素为head基本一致
+        lastnode.nextnode = NewNode
