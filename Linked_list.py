@@ -44,9 +44,28 @@ class LinkedList:
         lastnode.nextnode = NewNode
         
         
-    def PrintLinkedList(self): # 从头打印这个链表
+    def PrintLinkedListFromHead(self): # 从头打印这个链表
         current_node = self.head
         while current_node:
             print(current_node.value)
             current_node = current_node.nextnode
             
+            
+    def PrintLinkedListFromTail(self, Node): #利用递归从最后一个元素开始打印链表
+        if Node is None:  
+            return []  
+        return self.PrintLinkedListFromTail(Node.nextnode) + [Node.value]
+    
+    """
+    原理：
+    以链表[1,2,3]为例：
+    node分别为 head, node1, node2
+    从head开始递归：
+    1. node为head，函数进入head.nextnode即node1进行递归，node = node1, 同时list = [1]
+    2. node为node1，函数进入node1.nextnode即node2进行递归， node = node2， 同时list = [2] + list
+    3. node为node2，函数进入node2.nextnode即为None，node = None， 同时list = [3] + list
+    4. 结束递归, list = [] + [3, 2, 1]
+    递归的list得到可以当作是从第四步开始 [] + [3] + [2] + [1]
+    """
+    
+    
